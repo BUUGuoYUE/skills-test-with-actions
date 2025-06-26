@@ -25,17 +25,23 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
+      # 设置 Node.js 环境
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18  # 可以选择所需的 Node.js 版本
+
+      # Runs a single command using the runner's shell
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
+      # Runs a set of commands using the runner's shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      # Fixed: Proper indentation for the markdown lint step
+
+      # Run markdown lint with proper indentation
       - name: Run markdown lint
         run: |
           npm install remark-cli remark-preset-lint-consistent
